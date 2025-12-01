@@ -1,33 +1,38 @@
-/* Navbar overall styling */
+/* -------------------- Navbar overall styling -------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 10px;
+  padding: 15px 20px;
   color: #fff;
-  background-color: blue;
+  background-color: #0072ff;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   font-family: 'Arial', sans-serif;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-/* Logo styling */
+/* -------------------- Logo styling -------------------- */
 .navbar .logo a {
   text-decoration: none;
   color: #fff;
   font-size: 28px;
   font-weight: bold;
   letter-spacing: 1px;
+  
 }
 
-/* Menu styling */
+/* -------------------- Menu styling -------------------- */
 .navbar .menu {
   display: flex;
-  gap:30px;
+  gap: 20px;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  
 }
 
 .navbar .menu a {
@@ -35,85 +40,99 @@
   color: #fff;
   font-weight: 500;
   transition: color 0.3s;
+
 }
 
 .navbar .menu a:hover {
   color: #ffd700;
 }
 
-/* Buttons inside navbar */
+/* -------------------- Buttons inside navbar -------------------- */
 .navbar .btn {
-  padding: 8px 15px;
+  padding: 8px 16px;
   border-radius: 5px;
   background-color: #ffd700;
   color: #0072ff;
   font-weight: bold;
-  transition: 0.3s;
+  transition: all 0.3s;
+  
 }
 
 .navbar .btn:hover {
   background-color: #fff;
   color: #0072ff;
+  
 }
 
 .navbar .btn.signup {
   background-color: #ff4b2b;
   color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .navbar .btn.signup:hover {
   background-color: #ff416c;
+  
 }
 
-/* Hamburger menu for mobile */
+/* -------------------- Hamburger menu for mobile -------------------- */
 .hamburger {
   display: none;
   font-size: 28px;
   cursor: pointer;
+  user-select: none;
+  
+  
 }
 
-/* Hide checkbox */
-#toggle {
-  display: none;
-}
-
-/* Responsive Styles */
+/* -------------------- Responsive Styles -------------------- */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px;
+  .hamburger {
+    display: block;
+    color: #fff;
+    
   }
 
   .navbar .menu {
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 100%;
+    max-height: 0;
     background: linear-gradient(to right, #00c6ff, #0072ff);
     position: absolute;
     top: 65px;
     left: 0;
     text-align: center;
-    padding: 20px 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-radius: 0 0 10px 10px;
+    z-index: 999;
+    
   }
 
-  /* Show menu when checkbox checked */
-  #toggle:checked + .hamburger + .menu {
-    display: flex;
-  }
-
-  .hamburger {
-    display: block;
-    color: #fff;
+  .navbar .menu.active {
+    max-height: 500px; /* adjust according to menu size */
+  
   }
 
   .navbar .menu a {
-    padding: 10px 0;
+    padding: 12px 0;
     font-size: 18px;
+    
   }
 
   .navbar .btn {
     margin: 5px 0;
   }
 }
+
+/* -------------------- Smooth scrolling -------------------- */
+html {
+  scroll-behavior: smooth;
+  
+}
+
 
 
 
