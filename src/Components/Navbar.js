@@ -1,16 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation(); // track route change
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setMenuOpen(false); // close menu on navigation
+  }, [location]);
+
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link to="/">Tour & Travel </Link>
+        <Link to="/">Tour & Travel</Link>
       </div>
-      <input type="checkbox" id="toggle" />
-      <label htmlFor="toggle" className="hamburger">&#9776;</label>
-      <div className="menu">
+
+      {/* Hamburger */}
+      <div
+        className="hamburger"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        &#9776;
+      </div>
+
+      {/* Menu */}
+      <div className={`menu ${menuOpen ? "active" : ""}`}>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/services">Services</Link>
